@@ -31,5 +31,33 @@ res.status(500).json({error:'Internal Server error'});
 })
 
 
+
+router.get('/:branchType', async(req,res) => {
+    try{
+
+const branchType = req.params.branchType ;
+
+if(branchType == 'ETC' || branchType == 'IT' || branchType == 'CSE'){
+
+    const data = await student.find({branch:branchType});
+    console.log('Data fetched');
+    res.status(200).json(data);
+}else {
+    res.status(404).json({error:"Invalid branch Type"});
+}     
+    }
+    catch(err){
+console.log('Error Occured');
+res.status(500).json({error:'Internal Server Error'});
+    }
+})
+
+
+
+
+
+
+
+
 module.exports = router;
 

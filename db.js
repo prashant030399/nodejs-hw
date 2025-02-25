@@ -1,20 +1,7 @@
 const mongoose = require('mongoose');
-// const mongoURL = "mongodb://localhost:27017/student";
+const mongoURL = "mongodb://localhost:27017/student";
 
-const mongoURL = process.env.MONGO_URI;
-
-
-
-
-
-mongoose.connect(mongoURL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-})
-.then(() => console.log('✅ MongoDB Atlas connected successfully'))
-.catch(err => console.error('❌ MongoDB Atlas connection error:', err));
-
-module.exports = mongoose;
+// const mongoURL = process.env.MONGO_URI;
 
 
 require('dotenv').config();
@@ -28,7 +15,7 @@ db.on('connected', () => {
 })
 
 db.on('error', () => {
-    console.log('MongoDB server error', err);
+    console.log('MongoDB server error', error);
 })
 
 db.on('disconnected', () => {
