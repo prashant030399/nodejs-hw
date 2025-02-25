@@ -1,0 +1,23 @@
+{
+  "name": "prashant",
+  "version": "1.0.0",
+  "description": "prashant",
+  "main": "server.js",
+  "scripts": {
+    "test": "prashant",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "nothing"
+  },
+  "keywords": [
+    "ff"
+  ],
+  "author": "f",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2",
+    "mongoose": "^8.10.1"
+  }
+}
