@@ -16,10 +16,8 @@ res.status(500).json({error:'Internal Server error'});
     }
 })
 
-
 router.get('/', async(req,res) => {
     try{
-       
         const data = await student.find();
         console.log('data fetched');
         res.status(200).json(data);
@@ -29,7 +27,6 @@ console.log('error occured');
 res.status(500).json({error:'Internal Server error'});
     }
 })
-
 
 
 router.get('/:branchType', async(req,res) => {
@@ -53,11 +50,53 @@ res.status(500).json({error:'Internal Server Error'});
 })
 
 
+router.put('/:id', async(req,res) => {
+    try{
+    
+        const studentId = req.params.id ;
+        const updatedPersonData = req.body ;
+
+const response = await student.findByIdAndUpdate(studentId, updatedPersonData, {
+    new  : true,
+    runValidators : true
+})
+
+if(!response){
+    return res.status(404).json({error:'Student not found'});
+}
+
+console.log('data updated');
+res.status(200).json(response);
+    }
+
+catch(err){
+    console.log(err);
+    res.status(500).json({error:'Internal Server Error '});
+}
+})
 
 
+router.delete('/:id', async (req, res) => {
+    try {
+        const studentId = req.params.id;
+        const response = await student.findByIdAndDelete(studentId);
 
+        if (!response) {
+            return res.status(404).json({ error: 'Student not found' });
+        }
+
+        console.log('Data deleted');
+        res.status(200).json({ message: 'Student deleted successfully', deletedStudent: response });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+                                                   
 
 
 
 module.exports = router;
 
+ 
