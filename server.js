@@ -7,7 +7,7 @@ app.use('/student',studentRoutes);
 
 const db = require('./db.js');
 
-const PORT = process.env.PORT || 16000 ; 
+const PORT = process.env.PORT || 18000 ; 
 
 app.listen(PORT, () => {
 console.log(`Your server is running at ${PORT}`);
