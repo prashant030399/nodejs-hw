@@ -3,7 +3,6 @@ const mongoURL = "mongodb://localhost:27017/student";
 
 // const mongoURL = process.env.MONGO_URI;
 
-
 require('dotenv').config();
 
 mongoose.connect(mongoURL);
